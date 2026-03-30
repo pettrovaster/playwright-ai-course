@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        # Здесь перечисляем все твои папки с проектами
+      matrix:        
         project-path: [
           'ai-assisted-framework-generation',
-          'ai-test-code-generation'
+          'ai-test-code-generation',
+          'ai.test.maintenance'
         ]
     steps:
     - uses: actions/checkout@v4
