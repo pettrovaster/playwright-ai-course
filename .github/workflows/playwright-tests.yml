@@ -19,6 +19,13 @@ jobs:
     timeout-minutes: 30
     env:
       CI: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     defaults:
       run:
         working-directory: ./ai.assisted.continuous.integration
@@ -54,6 +61,25 @@ jobs:
           curl -H "Content-Type: application/json" -d '{
             "text": "❌ **Playwright Tests Failed**\n\n**PR Title:** ${{ github.event.pull_request.title || 'N/A' }}\n**Author:** ${{ github.actor }}\n**Branch:** ${{ github.ref_name }}\n**Link:** [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
           }' ${{ secrets.TEAMS_WEBHOOK_URL }}
+
+      - if: always() && github.ref == 'refs/heads/main'
+        working-directory: .
+        run: |
+          REPORT_DIR="ai.assisted.continuous.integration/playwright-report"
+          mkdir -p $REPORT_DIR
+          git fetch origin gh-pages || true
+          git show origin/gh-pages:history.json > $REPORT_DIR/history.json || echo "[]" > $REPORT_DIR/history.json
+          ENTRY=$(jq -n --arg ts "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --arg sha "${{ github.sha }}" --arg ref "${{ github.ref_name }}" --arg status "${{ job.status }}" '{timestamp: $ts, runUrl: $url, commitSha: $sha, branch: $ref, status: $status}')
+          jq ". + [$ENTRY]" $REPORT_DIR/history.json > $REPORT_DIR/tmp.json && mv $REPORT_DIR/tmp.json $REPORT_DIR/history.json
+
+      - uses: actions/upload-pages-artifact@v3
+        if: always() && github.ref == 'refs/heads/main'
+        with:
+          path: ai.assisted.continuous.integration/playwright-report/
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        if: always() && github.ref == 'refs/heads/main'
 
   security-scan:
     runs-on: ubuntu-latest
