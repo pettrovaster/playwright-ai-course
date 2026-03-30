@@ -1,0 +1,16 @@
+{
+  "name": "ai.test.maintenance",
+  "version": "1.0.0",
+  "description": "Playwright tests for the Playwright website using POM pattern",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.0.0"
+  }
+}
