@@ -1,0 +1,116 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - banner [ref=e6]:
+        - generic [ref=e7]:
+          - link "automateNow Logo" [ref=e8] [cursor=pointer]:
+            - /url: https://practice-automation.com/
+            - img "automateNow Logo" [ref=e9]
+          - navigation "Top Menu" [ref=e10]:
+            - list [ref=e11]:
+              - listitem [ref=e12]:
+                - link "Courses" [ref=e13] [cursor=pointer]:
+                  - /url: https://automatenow-courses.teachable.com/
+              - listitem [ref=e14]:
+                - link "Blog" [ref=e15] [cursor=pointer]:
+                  - /url: https://automatenow.io/
+      - generic [ref=e17]:
+        - heading "Form Fields" [level=1] [ref=e18]
+        - navigation [ref=e19]:
+          - generic [ref=e20]:
+            - link "Home" [ref=e22] [cursor=pointer]:
+              - /url: https://practice-automation.com/
+            - text: » Form Fields
+    - main [ref=e26]:
+      - article [ref=e28]:
+        - generic [ref=e29]:
+          - paragraph [ref=e30]:
+            - text: Filling out a web form is one of the most fundamental things to learn as you begin your automation journey. You can use the following form to practice
+            - link "entering text into an input field" [ref=e31] [cursor=pointer]:
+              - /url: https://youtu.be/TprLDlMoA1o?si=G2uqkR_UKIGKGUb-&t=383
+            - text: (here is
+            - link "how to enter text using Cypress" [ref=e32] [cursor=pointer]:
+              - /url: https://youtu.be/4qcK_6q968k?si=lcqs48GH3x3FEj7H
+            - text: ),
+            - link "selecting a checkbox" [ref=e33] [cursor=pointer]:
+              - /url: https://youtu.be/fE3o9_BFMKg?si=6w7PBc5yoAXmsWWo&t=205
+            - text: ","
+            - link "clicking a radio button" [ref=e34] [cursor=pointer]:
+              - /url: https://youtu.be/pyGS6WlDrVg
+            - text: ","
+            - link "selecting from a drop-down menu" [ref=e35] [cursor=pointer]:
+              - /url: https://www.youtube.com/watch?v=ugsz4QyGJqM
+            - text: ","
+            - link "getting an element’s text" [ref=e36] [cursor=pointer]:
+              - /url: https://youtu.be/f4YPwD1YZRw?si=PgUCcfwqQ9d-dOyu
+            - text: and other similar things. Have fun!
+          - generic [ref=e37]:
+            - generic [ref=e38] [cursor=pointer]:
+              - text: Name
+              - textbox "Name" [ref=e39]
+            - paragraph [ref=e40]: "* Required"
+            - generic [ref=e41] [cursor=pointer]:
+              - text: Password
+              - textbox "Password" [ref=e42]
+            - generic [ref=e43] [cursor=pointer]: What is your favorite drink?
+            - checkbox "Water" [ref=e44]
+            - generic [ref=e45] [cursor=pointer]: Water
+            - checkbox "Milk" [ref=e46]
+            - generic [ref=e47] [cursor=pointer]: Milk
+            - checkbox "Coffee" [ref=e48]
+            - generic [ref=e49] [cursor=pointer]: Coffee
+            - checkbox "Wine" [ref=e50]
+            - generic [ref=e51] [cursor=pointer]: Wine
+            - checkbox "Ctrl-Alt-Delight" [ref=e52]
+            - generic [ref=e53] [cursor=pointer]: Ctrl-Alt-Delight
+            - generic [ref=e54] [cursor=pointer]: What is your favorite color?
+            - radio "Red" [ref=e55]
+            - generic [ref=e56] [cursor=pointer]: Red
+            - radio "Blue" [ref=e57]
+            - generic [ref=e58] [cursor=pointer]: Blue
+            - radio "Yellow" [ref=e59]
+            - generic [ref=e60] [cursor=pointer]: Yellow
+            - radio "Green" [ref=e61]
+            - generic [ref=e62] [cursor=pointer]: Green
+            - radio "#FFC0CB" [ref=e63]
+            - generic [ref=e64] [cursor=pointer]: "#FFC0CB"
+            - generic [ref=e65] [cursor=pointer]: Do you like automation?
+            - combobox [ref=e66]:
+              - option [selected]
+              - option "Yes"
+              - option "No"
+              - option "Undecided"
+            - generic [ref=e67] [cursor=pointer]: Automation tools
+            - list [ref=e68]:
+              - listitem [ref=e69]: Selenium
+              - listitem [ref=e70]: Playwright
+              - listitem [ref=e71]: Cypress
+              - listitem [ref=e72]: Appium
+              - listitem [ref=e73]: Katalon Studio
+            - generic [ref=e74] [cursor=pointer]: Email
+            - textbox "Email" [ref=e75]
+            - generic [ref=e76] [cursor=pointer]: Message
+            - textbox "Message" [ref=e77]:
+              - /placeholder: Enter message here
+            - button "Submit" [ref=e78] [cursor=pointer]
+    - generic [ref=e79]:
+      - contentinfo [ref=e80]:
+        - complementary [ref=e83]:
+          - generic [ref=e87]:
+            - paragraph [ref=e89]:
+              - link "Learn More" [ref=e90] [cursor=pointer]:
+                - /url: https://linktr.ee/automateNow
+            - paragraph [ref=e92]:
+              - link "About" [ref=e93] [cursor=pointer]:
+                - /url: https://automatenow.io/about/
+      - generic [ref=e97]: © 2020-2026 - automateNow, LLC. All rights reserved.
+  - button "Search Toggler" [expanded] [ref=e98] [cursor=pointer]
+  - link "Go to top" [ref=e100] [cursor=pointer]:
+    - /url: "#body"
+    - generic [ref=e101]: Go to top
+```

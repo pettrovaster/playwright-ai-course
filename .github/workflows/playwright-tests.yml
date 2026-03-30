@@ -48,3 +48,33 @@ jobs:
         with:
           name: playwright-traces
           path: ai.assisted.continuous.integration/test-results/
+
+      - if: failure()
+        run: |
+          curl -H "Content-Type: application/json" -d '{
+            "text": "❌ **Playwright Tests Failed**\n\n**PR Title:** ${{ github.event.pull_request.title || 'N/A' }}\n**Author:** ${{ github.actor }}\n**Branch:** ${{ github.ref_name }}\n**Link:** [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          }' ${{ secrets.TEAMS_WEBHOOK_URL }}
+
+  security-scan:
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    defaults:
+      run:
+        working-directory: ./ai.assisted.continuous.integration
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: './ai.assisted.continuous.integration/package-lock.json'
+
+      - run: npm ci
+
+      - run: |
+          echo "### Security Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo '```text' >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=high >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=high
